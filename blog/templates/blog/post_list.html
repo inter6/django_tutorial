@@ -1,18 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
 <html>
 <head>
     <title>Django Tutorial</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
 </head>
 <body>
-<div>
-    <p>Hi there!</p>
-    <p>It works!</p>
+<div class="container">
+    {% for post in posts %}
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ post.title }}</div>
+            <div class="panel-body">
+                <p>{{ post.published_date }}</p>
+                <p>{{ post.text | linebreaksbr }}</p>
+            </div>
+        </div>
+    {% endfor %}
 </div>
-{% for post in posts %}
-    <div>
-        <p>{{ post.title }}</p>
-        <p>{{ post.published_date }}</p>
-        <p>{{ post.text | linebreaksbr }}</p>
-    </div>
-{% endfor %}
 </body>
 </html>
