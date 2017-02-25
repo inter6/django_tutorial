@@ -5,9 +5,22 @@
         <div class="panel-body">
             <button type="button" class="btn btn-default" onclick="location.href='{% url 'post_list' %}'">Back</button>
             {% if user.is_authenticated %}
-                <button type="button" class="btn btn-default"
-                        onclick="location.href='{% url 'post_edit' pk=post.pk %}'">Edit
-                </button>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default"
+                            onclick="location.href='{% url 'post_edit' pk=post.pk %}'">Edit
+                    </button>
+                    <button type="button" class="btn btn-default btn-success"
+                            onclick="location.href='{% url 'post_publish' pk=post.pk %}'">Publish
+                    </button>
+                    {% if post.published_date %}
+                        <button type="button" class="btn btn-default btn-warning"
+                                onclick="location.href='{% url 'post_unpublish' pk=post.pk %}'">Unpublish
+                        </button>
+                    {% endif %}
+                    <button type="button" class="btn btn-default btn-danger"
+                            onclick="location.href='{% url 'post_remove' pk=post.pk %}'">Remove
+                    </button>
+                </div>
             {% endif %}
         </div>
     </div>

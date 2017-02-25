@@ -4,15 +4,14 @@
     {% if user.is_authenticated %}
         <div class="panel panel-default">
             <div class="panel-body">
-                <button type="button" class="btn btn-default" onclick="location.href='{% url 'post_new' %}'">New
-                    Post
+                <button type="button" class="btn btn-default" onclick="location.href='{% url 'post_new' %}'">New Post
                 </button>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default btn-primary"
-                            onclick="location.href='{% url 'post_list' %}'">
+                    <button type="button" class="btn btn-default" onclick="location.href='{% url 'post_list' %}'">
                         Published
                     </button>
-                    <button type="button" class="btn btn-default" onclick="location.href='{% url 'post_draft_list' %}'">
+                    <button type="button" class="btn btn-default btn-primary"
+                            onclick="location.href='{% url 'post_draft_list' %}'">
                         Drafts
                     </button>
                 </div>
@@ -25,7 +24,6 @@
                 <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
             </div>
             <div class="panel-body">
-                <p>{{ post.published_date }}</p>
                 <p>{{ post.text | linebreaksbr }}</p>
             </div>
         </div>
